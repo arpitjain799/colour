@@ -22,6 +22,7 @@ from colour.adaptation import CHROMATIC_ADAPTATION_TRANSFORMS
 from colour.algebra import matrix_dot, vector_dot, sdiv, sdiv_mode
 from colour.hints import ArrayLike, Literal, NDArrayFloat
 from colour.utilities import (
+    as_float_array,
     from_range_1,
     row_as_diagonal,
     to_domain_1,
@@ -115,8 +116,8 @@ def matrix_chromatic_adaptation_VonKries(
            [-0.0092430...,  0.0150551...,  0.7518742...]])
     """
 
-    XYZ_w = to_domain_1(XYZ_w)
-    XYZ_wr = to_domain_1(XYZ_wr)
+    XYZ_w = as_float_array(XYZ_w)
+    XYZ_wr = as_float_array(XYZ_wr)
 
     transform = validate_method(
         transform,
