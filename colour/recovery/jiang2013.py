@@ -59,10 +59,13 @@ def PCA_Jiang2013(
     msds_camera_sensitivities: Mapping[str, MultiSpectralDistributions],
     eigen_w_v_count: int | None = None,
     additional_data: bool = False,
-) -> Tuple[
-    Tuple[NDArrayFloat, NDArrayFloat, NDArrayFloat],
-    Tuple[NDArrayFloat, NDArrayFloat, NDArrayFloat],
-] | Tuple[NDArrayFloat, NDArrayFloat, NDArrayFloat]:
+) -> (
+    Tuple[
+        Tuple[NDArrayFloat, NDArrayFloat, NDArrayFloat],
+        Tuple[NDArrayFloat, NDArrayFloat, NDArrayFloat],
+    ]
+    | Tuple[NDArrayFloat, NDArrayFloat, NDArrayFloat]
+):
     """
     Perform the *Principal Component Analysis* (PCA) on given camera *RGB*
     sensitivities.

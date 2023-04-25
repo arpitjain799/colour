@@ -74,16 +74,18 @@ Global variable storing the current *Colour* safe division function mode.
 """
 
 
-def get_sdiv_mode() -> Literal[
-    "Numpy",
-    "Ignore",
-    "Warning",
-    "Raise",
-    "Ignore Zero Conversion",
-    "Warning Zero Conversion",
-    "Ignore Limit Conversion",
-    "Warning Limit Conversion",
-]:
+def get_sdiv_mode() -> (
+    Literal[
+        "Numpy",
+        "Ignore",
+        "Warning",
+        "Raise",
+        "Ignore Zero Conversion",
+        "Warning Zero Conversion",
+        "Ignore Limit Conversion",
+        "Warning Limit Conversion",
+    ]
+):
     """
     Return *Colour* safe division mode.
 

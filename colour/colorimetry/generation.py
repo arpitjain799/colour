@@ -755,7 +755,7 @@ def sd_multi_leds_Ohno2005(
 
     sd = sd_zeros(shape)
 
-    for (peak_wavelength, fwhm_s, peak_power_ratio) in zip(
+    for peak_wavelength, fwhm_s, peak_power_ratio in zip(
         peak_wavelengths, fwhm, peak_power_ratios
     ):
         sd += (

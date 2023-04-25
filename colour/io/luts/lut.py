@@ -892,7 +892,6 @@ class LUT1D(AbstractLUT):
         size: ArrayLike | None = None,
         comments: Sequence | None = None,
     ) -> None:
-
         domain = as_float_array(optional(domain, np.array([0, 1])))
         size = optional(size, 10)
 
