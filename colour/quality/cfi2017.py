@@ -446,7 +446,7 @@ def tcs_colorimetry_data(
     >>> delta_E_to_R_f(4.4410383190)  # doctest: +ELLIPSIS
     70.1208254...
     """
-    if type(sd_irradiance) is SpectralDistribution:
+    if isinstance(sd_irradiance, SpectralDistribution):
         sd_irradiance = [sd_irradiance]
 
     XYZ_w = np.full((len(sd_irradiance), 3), np.nan)
