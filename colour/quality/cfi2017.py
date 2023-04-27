@@ -217,8 +217,8 @@ def colour_fidelity_index_CIE2017(
     ) = tcs_colorimetry_data([sd_test, sd_reference], sds_tcs, cmfs_10)
 
     delta_E_s = euclidean_distance(
-        [test_sample.Jpapbp for test_sample in test_tcs_colorimetry_data],
-        [ref_sample.Jpapbp for ref_sample in reference_tcs_colorimetry_data],
+        test_tcs_colorimetry_data.Jpapbp,
+        reference_tcs_colorimetry_data.Jpapbp,
     )
 
     R_s = delta_E_to_R_f(delta_E_s)
@@ -494,20 +494,16 @@ def tcs_colorimetry_data(
         ]
     )
     Jpapbp = JMh_CIECAM02_to_CAM02UCS(JMh)
-    specification = as_float_array(specification)
     tcs_data = []
     # fmt: off
     for sd_idx in range(len(sd_irradiance)):
         tcs_data.append(
-            [
                 DataColorimetry_TCS_CIE2017(
-                    sds_tcs.display_labels[idx],  # @tjdcs Performance Hack
-                    XYZ[sd_idx][idx],
-                    JMh[sd_idx][idx],
-                    Jpapbp[sd_idx][idx],
+                    sds_tcs.display_labels,
+                    XYZ[sd_idx],
+                    JMh[sd_idx],
+                    Jpapbp[sd_idx],
                 )
-                for idx in range(len(sds_tcs.signals))
-            ]
         )
         #fmt: on
 

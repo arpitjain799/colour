@@ -141,12 +141,7 @@ def colour_fidelity_index_ANSIIESTM3018(
     )
 
     # Setup bins based on where the reference a'b' points are located.
-    bins = np.floor(
-        as_float_array(
-            [sample.JMh[2] for sample in specification.colorimetry_data[1]]
-        )
-        / 22.5
-    )
+    bins = np.floor(specification.colorimetry_data[1].JMh[:, 2] / 22.5)
 
     bin_mask = bins == np.arange(16).reshape(-1, 1)
 
@@ -158,12 +153,8 @@ def colour_fidelity_index_ANSIIESTM3018(
     bin_mask = np.choose(bin_mask, [np.nan, 1])
 
     # Per-bin a'b' averages.
-    test_apbp = as_float_array(
-        [j.Jpapbp[1:] for j in specification.colorimetry_data[0]]
-    )
-    ref_apbp = as_float_array(
-        [j.Jpapbp[1:] for j in specification.colorimetry_data[1]]
-    )
+    test_apbp = as_float_array(specification.colorimetry_data[0].Jpapbp[:, 1:])
+    ref_apbp = as_float_array(specification.colorimetry_data[1].Jpapbp[:, 1:])
 
     # By we can essentially tile the apbp data in the 3rd dimmension and use
     # broadcasting to place each bin mask in the third dimmension. By
